@@ -23,7 +23,7 @@ app.use(cors());
 
 const io = require("socket.io")(server, {
     cors: {
-        origin: ["http://localhost:3000","https://interviewspace-frontend.herokuapp.com/", "https://interviewspace.herokuapp.com/"],
+        origin: "https://interviewspace.herokuapp.com/",
         methods: ["GET", "POST"],
     }
 })
