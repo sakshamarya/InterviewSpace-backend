@@ -8,6 +8,10 @@ const questionModel = require("./models/questions.js");
 const sessionModel = require("./models/userDetails.js")
 require("dotenv").config();
 
+// simple-peer-server for STUN servers on server side
+const SimplePeerServer = require('simple-peer-server');
+const spServer = new SimplePeerServer(server);
+
 
 // to parse post request
 app.use(
