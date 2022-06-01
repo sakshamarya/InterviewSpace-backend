@@ -79,6 +79,8 @@ async function getSessionRecords(mailId) {
 }
 
 app.get("/twilioServers",(req,res)=>{
+
+    // Extracting STUN and TURN URLS and credentials
     
     client.tokens.create().then((token) =>{
 
