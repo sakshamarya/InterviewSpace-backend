@@ -9,6 +9,12 @@ const sessionModel = require("./models/userDetails.js")
 require("dotenv").config();
 
 
+// Twilio STUN and TURN server
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+
+
 // to parse post request
 app.use(
     express.urlencoded({
@@ -72,6 +78,21 @@ async function getSessionRecords(mailId) {
     }
 }
 
+app.get("/twilioServers",(req,res)=>{
+    
+    client.tokens.create().then((token) =>{
+
+        const data = {
+            stunURL: token.iceServers[0].url,
+            turnURL: token.iceServers[1].url,
+            turnUsername: token.iceServers[1].username,
+            turnPass: token.iceServers[1].credential
+        }
+        res.send(data);
+    });
+    
+    
+})
 
 app.get("/getQuestion", async (req, res) => {
     const question = await getData();
