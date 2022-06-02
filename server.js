@@ -9,10 +9,15 @@ const sessionModel = require("./models/userDetails.js")
 require("dotenv").config();
 
 
+
 // Twilio STUN and TURN server
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
+
+
+// const TwilioClient = require('twilio').Client;
+// const client = new TwilioClient(accountSid, authToken, "interviewspace-backend");
 
 
 // to parse post request

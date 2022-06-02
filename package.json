@@ -15,7 +15,9 @@
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.9",
     "simple-peer-server": "0.0.8",
-    "socket.io": "^4.4.1"
+    "socket.io": "^4.4.1",
+    "twilio": "^3.77.2",
+    "twilio-heroku": "^0.3.2"
   },
   "devDependencies": {}
 }
