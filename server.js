@@ -31,7 +31,6 @@ app.use(express.json())
 
 // sending request from reactjs to get question was giving cors error which got fixed by this
 app.use(cors());
-server.use(cors());
 
 const io = require("socket.io")(server, {
     cors: {
