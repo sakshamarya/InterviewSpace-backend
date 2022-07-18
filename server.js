@@ -74,9 +74,48 @@ async function getData() {
 
 }
 
+
+function compare(a,b){
+    let dd1=parseInt(a.date[0]+a.date[1]);
+    let mm1=parseInt(a.date[3]+a.date[4]);
+    let yy1=parseInt(a.date.substr(6,4));
+
+    let dd2=parseInt(b.date[0]+b.date[1]);
+    let mm2=parseInt(b.date[3]+b.date[4]);
+    let yy2=parseInt(b.date.substr(6,4));
+
+    if(yy1<yy2){
+      return 1;
+    }
+    else if(yy1>yy2){
+      return -1;
+    }
+    else{
+      if(mm1<mm2){
+        return 1;
+      }
+      else if(mm1>mm2){
+        return -1;
+      }
+      else{
+        if(dd1<dd2){
+          return 1;
+        }
+        else if(dd1>dd2){
+          return -1;
+        }
+        else{
+          return 0;
+        }
+      }
+    }
+
+  }
+
 async function getSessionRecords(mailId) {
     try {
         const session = await sessionModel.find({ userEmail: mailId });
+        session.sort(compare);
         return session;
     } catch (error) {
         return error;
@@ -124,6 +163,8 @@ app.post("/insertSessionDetails", async (req, res) => {
 
     res.send(200);
 })
+
+
 
 app.post("/getSessionRecords", async (req, res) => {
     try {
