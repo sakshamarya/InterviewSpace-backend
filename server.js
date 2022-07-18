@@ -121,6 +121,8 @@ app.post("/insertSessionDetails", async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+
+    res.send(200);
 })
 
 app.post("/getSessionRecords", async (req, res) => {
