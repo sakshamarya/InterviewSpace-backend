@@ -34,7 +34,7 @@ app.use(cors());
 
 const io = require("socket.io")(server, {
     cors: {
-        origin: ["http://localhost:3000","https://interviewspace.herokuapp.com"],
+        origin: ["http://localhost:3000","https://interviewspace.herokuapp.com", "https://interview-space-frontend.vercel.app"],
         methods: ["GET", "POST"],
     }
 })
